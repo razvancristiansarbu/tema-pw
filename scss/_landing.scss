@@ -1,0 +1,64 @@
+.landing-content {
+    width: 100%;
+    background: #A8D0E6;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    text-align: center;
+    color: white;
+
+    h1 {
+        margin: 20px;
+        text-shadow: #bedded 2px 2px;
+    }
+
+    .header-p {
+        text-shadow: #bedded 1px 1px;
+        padding-bottom: 10px;
+    }
+
+    .image-carousel {
+        position: relative;
+        display: inline-block;
+
+        .laptop {
+            width: 548px;
+            height: auto;
+        }
+    
+        .carousel {
+            position: absolute;
+            width: 430px;
+            left: 59px;
+            top: 4.15%;
+            margin:auto;
+            background-color: black;
+    
+            img {
+                height: 278px;
+                border-radius: 8px;
+            }
+        }
+
+        button {
+            position: absolute;
+            width: 100px;
+            height: 25px;
+            font-size: 10px;
+            font-weight: 500;
+            color: white;
+            background-color: #F76C6C;
+            border: 0px;
+            border-radius: 20px;
+        }
+
+        .sign-in {
+            bottom: 8px;
+            left: 80px;
+        }
+
+        .sign-up {
+            bottom: 8px;
+            right: 80px;
+        }
+    }
+}
