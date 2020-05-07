@@ -1,0 +1,24 @@
+{
+  "name": "tema-pw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/razvancristiansarbu/tema-pw.git"
+  },
+  "author": "Razvan Sarbu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/razvancristiansarbu/tema-pw/issues"
+  },
+  "homepage": "https://github.com/razvancristiansarbu/tema-pw#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.3"
+  }
+}
