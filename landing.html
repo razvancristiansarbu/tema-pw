@@ -17,7 +17,7 @@
                 <img class="logo" src="/1784571.svg" alt="controller-svg">
                 <p class="nav-p">youplay.</p>
                 <ul>
-                    <li>Home</li>
+                    <li id="home-button">Home</li>
                     <li>Contact</li>
                     <li>Products</li>
                 </ul>
@@ -64,8 +64,13 @@
                     </a>
                 </div>
 
-                <button class="sign-up">Sign Up</button>
-                <button class="sign-in">Sign In</button>
+                <form method="GET" action="/signin">
+                    <button class="sign-in" id="signin">Sign In</button>
+                </form>
+                <form method="GET" action="/signup">
+                    <button class="sign-up" id="signup">Sign Up</button>
+                </form>
+                
             </section>
             
             
@@ -75,5 +80,7 @@
         <footer>
 
         </footer>
+
+        <script src="/landing.js"></script>
     </body>
 </html>

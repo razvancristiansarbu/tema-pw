@@ -17,7 +17,7 @@
                 <img class="logo" src="/1784571.svg" alt="controller-svg">
                 <p class="nav-p">youplay.</p>
                 <ul>
-                    <li>Home</li>
+                    <li id="home-button">Home</li>
                     <li>Contact</li>
                     <li>Products</li>
                 </ul>
@@ -32,13 +32,13 @@
                     <img class="signup-image" src="/gamer.svg" alt="gamer-svg">
                 </div>
 
-                <form action="" class="signup">
-                    <input type="text" name="first-name" placeholder="First Name">
-                    <input type="text" name="last-name" placeholder="Last Name">
+                <form method="POST" action="/signup" class="signup">
+                    <input type="text" name="firstName" placeholder="First Name">
+                    <input type="text" name="lastName" placeholder="Last Name">
                     <input type="text" name="username" placeholder="Username">
                     <input type="email" name="email" placeholder="Email">
-                    <input type="password" name="passsword" placeholder="Password">
-                    <input type="password" name="password-confirmation" placeholder="Confirm password">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="passwordConfirmation" placeholder="Confirm password">
                     <button type="submit">Create account</button>
                 </form>
             </section>
@@ -48,5 +48,6 @@
         <footer>
 
         </footer>
+        <script src="/landing.js"></script>
     </body>
 </html>
