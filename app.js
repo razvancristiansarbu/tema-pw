@@ -1,11 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const expressLayouts = require('express-ejs-layouts');
 
 const app = express();
 
 app.set('view engine', 'ejs');
-
+app.use(expressLayouts);
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('public'));
@@ -17,15 +18,15 @@ app.get("/salut", (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + "/landing.html");
+    res.render('landing');
 });
 
 app.get('/signup', (req, res) => {
-    res.sendFile(__dirname + "/signup.html");
+    res.render('signup');
 });
 
 app.get('/signin', (req, res) => {
-    res.sendFile(__dirname + "/signin.html");
+    res.render('signin');
 });
 
 mongoose.connect(('mongodb://localhost:27017/pwhomeworkDB'), {
@@ -63,7 +64,27 @@ db.once('open', () => {
         }
     });
 
+    const productSchema = new mongoose.Schema({
+        name: {
+            type: String,
+            require: [true, "Product must have a name"]
+        },
+        price: {
+            type: Number,
+            required: [true, "Product must have a price."]
+        },
+        imageSrc: {
+            type: String,
+            required: [true, "Product must have an image"]
+        },
+        category: {
+            type: String,
+            required: [true, "Product must have a category"]
+        }
+    });
+
     const User = mongoose.model('User', userSchema);
+    const Product = mongoose.model('Product', productSchema);
 
     app.post('/signup', (req, res) => {
         const newUser = new User({
@@ -98,13 +119,26 @@ db.once('open', () => {
                 if(foundUser !== null) {
                     if(foundUser.password === searchedUser.password) {
                         console.log(`Logged in: ${foundUser.username}.`);
+                    } else {
+                        console.log("User gasit, parola gresita.");
                     }
                 } else {
                     console.log('User not found');
                 }
             }
         });
-        res.send(`Hello, ${searchedUser.username}`);
+        
+    });
+
+    app.get('/products', (req, res) => {
+        const newProduct = new Product({
+            name: 'Grand Theft Auto V',
+            price: 60,
+            imageSrc: 'imagineGTA',
+            category: 'action'
+        });
+
+        newProduct.save();
     });
 });
 
