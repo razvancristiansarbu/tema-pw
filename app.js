@@ -13,6 +13,13 @@ app.use(express.static('public'));
 app.use(express.static('images'));
 app.use(express.static('js'));
 
+// GLOBAL VARIABLES 
+
+var connectedUser;
+var filteredProducts = [];
+
+///////////////////////////
+
 app.get("/salut", (req, res) => {
     res.send("SALUT");
 });
@@ -118,7 +125,10 @@ db.once('open', () => {
             } else {
                 if(foundUser !== null) {
                     if(foundUser.password === searchedUser.password) {
+                        connectedUser = foundUser.username;
+                        //console.log(connectedUser);
                         console.log(`Logged in: ${foundUser.username}.`);
+                        res.redirect('/products');
                     } else {
                         console.log("User gasit, parola gresita.");
                     }
@@ -131,14 +141,29 @@ db.once('open', () => {
     });
 
     app.get('/products', (req, res) => {
-        const newProduct = new Product({
-            name: 'Grand Theft Auto V',
-            price: 60,
-            imageSrc: 'imagineGTA',
-            category: 'action'
-        });
+        Product.find((err, items) => {
+            if(err) {
+                console.log(err);
+            } else {
+                res.render('products', {products: items, user: connectedUser});
+            }
+        })
+    });
 
-        newProduct.save();
+    app.get('/products/:gameCategory', (req, res) => {
+        filteredProducts = [];
+        Product.find((err, items) => {
+            if(err) {
+                console.log(err);
+            } else {
+                items.forEach(item => {
+                    if(item.category.toLowerCase() === req.params.gameCategory) {
+                        filteredProducts.push(item);
+                    }
+                });
+            }
+            res.render('products', {products: filteredProducts, user: connectedUser});
+        });
     });
 });
 

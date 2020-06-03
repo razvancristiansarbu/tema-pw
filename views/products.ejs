@@ -1,0 +1,50 @@
+<section class="product-content">
+    <section class=title>
+        <h2>Hello, <%= user %>!</h2>
+    </section>
+    <aside class="side-menu">
+        <section class="side-menu-content">
+            <form action="/products/sports" method="GET">
+                <button type="submit">Sports</button>
+            </form>
+            <form action="/products/action" method="GET">
+                <button type="submit">Action</button>
+            </form>
+            <form action="/products/shooter" method="GET">
+                <button type="submit">Shooter</button>
+            </form>
+            <form action="/products/racing" method="GET">
+                <button type="submit">Racing</button>
+            </form>
+            <form action="/products/simulator" method="GET">
+                <button type="submit">Simulator</button>
+            </form>
+            <form action="/products/adventure" method="GET">
+                <button type="submit">Adventure</button>
+            </form>
+            <form action="/products/strategy" method="GET">
+                <button type="submit">Strategy</button>
+            </form>
+            <form action="/products" method="GET">
+                <button type="submit">All games</button>
+            </form>
+        </section>
+    </aside>
+    <section class="products"> 
+        <% for(let i = 0; i < products.length; ++i) { %>
+            <div class="item">
+                <div class="item-image">
+                    <img src="<%= products[i].imageSrc %>" alt="">
+                </div>
+                <div class="item-info">
+                    <p class="item-name"><%= products[i].name%></p>
+                    <p class="item-category">Category: <%= products[i].category %></p>
+                    <p class="item-price">Price: <%= products[i].price %> &#8364;</p>
+                    <button>Add to cart</button>
+                </div>
+            </div>
+        <% } %> 
+        
+    </section>
+</section>
+
